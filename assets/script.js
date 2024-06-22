@@ -1,20 +1,20 @@
 // Get a reference to the #add-employees-btn element
 const addEmployeesBtn = document.querySelector('#add-employees-btn');
 
-// Collect employee data
-  
 // Capitalize employee's names
 const capitalizeFirstLetter = string => {
-    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
-  };
+  return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+};
+
+// Collect employee data
 
 const collectEmployees = () => {
 
-//TODO:Get user input to create and return an array of employee objects
+// TODO: Get user input to create and return an array of employee objects
   const employees = [];
-  let addMore = true;
+  let addEmployee = true;
 
-  while (addMore) {
+  while (addEmployee) {
     const firstName = prompt("Please enter employee's first name:");
     const lastName = prompt("Please enter employee's last name:");
     const salaryInput = prompt("Please enter employee's salary:");
@@ -25,52 +25,60 @@ const collectEmployees = () => {
       const capitalizedFirstName = capitalizeFirstLetter(firstName);
       const capitalizedLastName = capitalizeFirstLetter(lastName);
 
-      employees.push({ firstName: capitalizedFirstName, lastName: capitalizedLastName, salary });
+      employees.push({ 
+        firstName: capitalizedFirstName, 
+        lastName: capitalizedLastName, 
+        salary });
+
     } else {
       alert("Invalid input. Please check the details and enter again.");
     }
-    
-  
 
-    //Add new employee entry
-    addMore = confirm("Do you want to add another employee?");
+    // Condition to add new employee entry
+    addEmployee = confirm("Do you want to add another employee?");
   }
-
-  employees.sort((a, b) => a.lastName.localeCompare(b.lastName));
+    // Sorting base on LastName
+    employees.sort((a, b) => a.lastName.localeCompare(b.lastName));
 
   return employees;
 };
 
-// Display the average salary
 // TODO: Calculate and display the average salary
   
 const calculateAverageSalary = employeesArray => {
 
-  // Calculate
-  const totalSalary = employeesArray.reduce((sum, { salary }) => sum + salary, 0);
+  let totalSalary = 0;
+  for (let i=0;i<employeesArray.length; i++) {
+    totalSalary += employeesArray[i].salary;
+  }
+  
   return totalSalary / employeesArray.length;
 };
 
 const displayAverageSalary = employeesArray => {
   
-  //Display
   const averageSalary = calculateAverageSalary(employeesArray);
 
   //Display avg salary with two decimals
   console.log(`Exact Figure: The average employee salary between our employee(s) is: 
   ${(averageSalary).toLocaleString('en-US',{ style: 'currency', currency: 'USD'})}`);
 
-  //Round up salary to remove decimals
+  //Round up salary with no decimal
   console.log(`Round-up Figure: The average employee salary between our employee(s) is: 
-  ${Math.round(averageSalary).toLocaleString('en-US',{ style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0})}`);
+  ${Math.round(averageSalary)
+    .toLocaleString('en-US',{ 
+      style: 'currency', 
+      currency: 'USD', 
+      minimumFractionDigits: 0, 
+      maximumFractionDigits: 0})}`);
 };
 
-// Select a random employee
+// TODO: Select and display a random employee
 const getRandomEmployee = employeesArray => {
-  // TODO: Select and display a random employee
+
   const randomdraw = Math.floor(Math.random() * employeesArray.length);
   const randomEmployee =employeesArray[randomdraw]
-  console.log (`Congratulations to ${randomEmployee.firstName}, our random drawing winner!`)
+  console.log (`Congratulations to ${randomEmployee.firstName} ${randomEmployee.lastName}, our random drawing winner!`)
 };
 
 /*
