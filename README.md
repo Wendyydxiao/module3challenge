@@ -1,7 +1,7 @@
 # 03 JavaScript: Employee Payroll Tracker
 - The goal of the project is to build a employee payroll tracker. It should enable payroll mamanger to add new employee salary, caculate average salary and randomly draw the winner employee. This is the 3rd module challenge for the bootcamp student to demonstrate JavaScript knowledge.
 - This page contains HTML, CSS & JS codes
-- Live page: TBP
+- Live page: https://wendyydxiao.github.io/module3challenge/
 - Screenshot: 
 <img src="/assets/images/module3.png" width="350" title="page screenshot">
 
